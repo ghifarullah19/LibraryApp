@@ -1,0 +1,233 @@
+{
+	"info": {
+		"name": "Library App REST API (Fullstack Monorepo)",
+		"description": "Dokumentasi API lengkap untuk Technical Test - Library Management System.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Authentication",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"New Admin\",\n    \"email\": \"admin2@test.com\",\n    \"password\": \"password123\",\n    \"password_confirmation\": \"password123\"\n}",
+							"options": {"raw": {"language": "json"}}
+						},
+						"url": {"raw": "{{base_url}}/register", "host": ["{{base_url}}"], "path": ["register"]}
+					}
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@test.com\",\n    \"password\": \"password123\"\n}",
+							"options": {"raw": {"language": "json"}}
+						},
+						"url": {"raw": "{{base_url}}/login", "host": ["{{base_url}}"], "path": ["login"]}
+					}
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "POST",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {"raw": "{{base_url}}/logout", "host": ["{{base_url}}"], "path": ["logout"]}
+					}
+				}
+			]
+		},
+		{
+			"name": "2. Books",
+			"item": [
+				{
+					"name": "Get All Books",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {"raw": "{{base_url}}/books?page=1&limit=10&search=&sort_by=created_at&sort_order=desc", "host": ["{{base_url}}"], "path": ["books"], "query": [{"key": "page", "value": "1"}, {"key": "limit", "value": "10"}, {"key": "search", "value": ""}, {"key": "sort_by", "value": "created_at"}, {"key": "sort_order", "value": "desc"}]}
+					}
+				},
+				{
+					"name": "Get Single Book",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {"raw": "{{base_url}}/books/1", "host": ["{{base_url}}"], "path": ["books", "1"]}
+					}
+				},
+				{
+					"name": "Create Book",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "POST",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Tutorial Laravel 11\",\n    \"description\": \"Buku panduan lengkap membuat API\",\n    \"author_id\": 1,\n    \"publisher_id\": 1,\n    \"publish_year\": 2024\n}",
+							"options": {"raw": {"language": "json"}}
+						},
+						"url": {"raw": "{{base_url}}/books", "host": ["{{base_url}}"], "path": ["books"]}
+					}
+				},
+				{
+					"name": "Update Book",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "PUT",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Tutorial Laravel 11 (Edisi Revisi)\",\n    \"author_id\": 1,\n    \"publisher_id\": 1,\n    \"publish_year\": 2025\n}",
+							"options": {"raw": {"language": "json"}}
+						},
+						"url": {"raw": "{{base_url}}/books/1", "host": ["{{base_url}}"], "path": ["books", "1"]}
+					}
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "DELETE",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {"raw": "{{base_url}}/books/1", "host": ["{{base_url}}"], "path": ["books", "1"]}
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Authors",
+			"item": [
+				{
+					"name": "Get All Authors",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {"raw": "{{base_url}}/authors", "host": ["{{base_url}}"], "path": ["authors"]}
+					}
+				},
+				{
+					"name": "Get Single Author",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {"raw": "{{base_url}}/authors/1", "host": ["{{base_url}}"], "path": ["authors", "1"]}
+					}
+				},
+				{
+					"name": "Create Author",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "POST",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"bio\": \"Penulis fiksi terkemuka.\"\n}",
+							"options": {"raw": {"language": "json"}}
+						},
+						"url": {"raw": "{{base_url}}/authors", "host": ["{{base_url}}"], "path": ["authors"]}
+					}
+				},
+				{
+					"name": "Update Author",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "PUT",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe (Updated)\",\n    \"bio\": \"Penulis fiksi terkemuka dengan banyak penghargaan.\"\n}",
+							"options": {"raw": {"language": "json"}}
+						},
+						"url": {"raw": "{{base_url}}/authors/1", "host": ["{{base_url}}"], "path": ["authors", "1"]}
+					}
+				},
+				{
+					"name": "Delete Author",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "DELETE",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {"raw": "{{base_url}}/authors/1", "host": ["{{base_url}}"], "path": ["authors", "1"]}
+					}
+				}
+			]
+		},
+		{
+			"name": "4. Publishers",
+			"item": [
+				{
+					"name": "Get All Publishers",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {"raw": "{{base_url}}/publishers", "host": ["{{base_url}}"], "path": ["publishers"]}
+					}
+				},
+				{
+					"name": "Get Single Publisher",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "GET",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {"raw": "{{base_url}}/publishers/1", "host": ["{{base_url}}"], "path": ["publishers", "1"]}
+					}
+				},
+				{
+					"name": "Create Publisher",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "POST",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Gramedia Pustaka\",\n    \"address\": \"Jl. Palmerah Barat, Jakarta\"\n}",
+							"options": {"raw": {"language": "json"}}
+						},
+						"url": {"raw": "{{base_url}}/publishers", "host": ["{{base_url}}"], "path": ["publishers"]}
+					}
+				},
+				{
+					"name": "Update Publisher",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "PUT",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Gramedia Pustaka Utama\",\n    \"address\": \"Jl. Palmerah Barat No. 29-37, Jakarta\"\n}",
+							"options": {"raw": {"language": "json"}}
+						},
+						"url": {"raw": "{{base_url}}/publishers/1", "host": ["{{base_url}}"], "path": ["publishers", "1"]}
+					}
+				},
+				{
+					"name": "Delete Publisher",
+					"request": {
+						"auth": {"type": "bearer", "bearer": [{"key": "token", "value": "{{jwt_token}}", "type": "string"}]},
+						"method": "DELETE",
+						"header": [{"key": "Accept", "value": "application/json"}],
+						"url": {"raw": "{{base_url}}/publishers/1", "host": ["{{base_url}}"], "path": ["publishers", "1"]}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{ "key": "base_url", "value": "http://127.0.0.1:8000/api", "type": "string" },
+		{ "key": "jwt_token", "value": "ISI_DENGAN_TOKEN_SETELAH_LOGIN", "type": "string" }
+	]
+}
