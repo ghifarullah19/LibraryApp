@@ -87,4 +87,4 @@ Project ini dilengkapi dengan file Postman Collection yang mencakup seluruh endp
 Silakan import file **`Library_API_Postman_Collection.json`** yang terdapat di *root folder* ke dalam aplikasi Postman Anda.
 
 ---
-*Dibuat oleh Muhammad Lutfi Amin Ghifarullah untuk Technical Test EDP gits.id.*
+*Dibuat oleh Muhammad Lutfi Amin Ghifarullah.*
